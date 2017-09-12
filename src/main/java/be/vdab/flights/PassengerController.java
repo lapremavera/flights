@@ -1,7 +1,9 @@
 package be.vdab.flights;
 
-/**
- * Created by vdabcursist on 12/09/2017.
- */
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class PassengerController {
+    @Autowired
+    private PassengerService ps;
 }
+

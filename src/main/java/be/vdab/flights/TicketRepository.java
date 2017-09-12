@@ -1,7 +1,28 @@
 package be.vdab.flights;
 
-/**
- * Created by vdabcursist on 12/09/2017.
- */
+import be.vdab.flights.domain.Flight;
+import be.vdab.flights.domain.Passenger;
+import be.vdab.flights.domain.Ticket;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class TicketRepository {
+
+    public Ticket persist (Passenger passenger, double price, Flight flight) {
+
+        System.out.println("Ticket wordt gepersisteerd");
+        return null;
+
+    }
+
+
+ /* public Ticket readById(int id) {
+      return new Ticket();
+
+
+
+
+    }
+    */
+
 }

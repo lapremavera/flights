@@ -1,7 +1,12 @@
 package be.vdab.flights;
 
-/**
- * Created by vdabcursist on 12/09/2017.
- */
+import be.vdab.flights.domain.Flight;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class FlightRepository {
+    public Flight ReadById(int id) {
+        System.out.println("Flight wordt gelezen via id");
+        return new Flight();
+    }
 }
