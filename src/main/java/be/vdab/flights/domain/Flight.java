@@ -10,10 +10,13 @@ import javax.persistence.*;
         @GeneratedValue (strategy = GenerationType.IDENTITY)
        // hoeft niet, want default @Column(nullable = false)
         private Integer id;         //mag niet null zijn
+
         @Column(unique = true, nullable = false)
         private String number;     //unique
+
         @Column(nullable = false)
         private String destination;  //mag niet null zijn
+
         @Column(nullable = false)
         private String departure;    //mag niet null zijn
 

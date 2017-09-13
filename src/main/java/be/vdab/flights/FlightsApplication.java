@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
+
 @SpringBootApplication
 public class FlightsApplication {
 
@@ -21,16 +23,30 @@ public class FlightsApplication {
 		Passenger q = new Passenger("Jane", "Doe");
 		pr.save(q);
 
+		List<Passenger> list= pr.findAll();
+		for (Passenger passenger : list) {
+			System.out.println(passenger.getFirstname());
+		}
+
 		TicketRepository tr = ac.getBean(TicketRepository.class);
 
 		Ticket t = new Ticket(200);
 		t.setPassenger(p);
 		tr.save(t);
 
+		Ticket j = new Ticket(750);
+		t.setPassenger(q);
+		tr.save(j);
+
 		FlightRepository fr = ac.getBean(FlightRepository.class);
 
 		Flight f = new Flight("BE500", "Brussel","Bali" );
 		fr.save(f);
+
+		Flight g = new Flight("GE780", "Eindhoven", "Griekenland");
+		fr.save(g);
+
+
 
 
 	}

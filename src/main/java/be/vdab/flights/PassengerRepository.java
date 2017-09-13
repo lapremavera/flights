@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,12 @@ public class PassengerRepository {
 //        em.getTransaction().begin();      dit doe je als je geen @Transactional hebt
 //        em.getTransaction().commit();
         em.persist(p);      // zo ga je zorgen dat het gesaved wordt in de db
+
+
+    }
+    public List<Passenger> findAll() {
+
+        return em.createQuery("SELECT p FROM Passenger p ORDER BY firstnamep", Passenger.class).getResultList();
 
 
     }
