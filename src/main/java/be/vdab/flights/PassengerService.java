@@ -13,10 +13,10 @@ public class PassengerService {
     @Autowired
     PassengerRepository pr;
 
-    public List <String> getAll() {
-        System.out.println("Get all inside passenger service");
-        return pr.findAll();
-    }
+//    public List <String> getAll() {
+//        System.out.println("Get all inside passenger service");
+//        return pr.findAll();
+//    }
 
     public Passenger findById(int Id) {
         System.out.println("Passenger wordt gevonden via de Id");

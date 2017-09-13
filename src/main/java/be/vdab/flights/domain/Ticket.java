@@ -1,38 +1,54 @@
 package be.vdab.flights.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Ticket {
 
+    @Column(nullable = false)
     private double price;
-    private String nameOfPassenger;
-    private int flightId;
 
-    public Ticket(int price, String nameOfPassenger, int flightId) {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    private Passenger passenger;
+
+    @ManyToOne
+    private Flight flight;
+
+    public Ticket(int price) {
         this.price = price;
-        this.nameOfPassenger = nameOfPassenger;
-        this.flightId = flightId;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+        passenger.addTicket(this);
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 
     public double getPrice() {
         return price;
+
     }
 
     public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getNameOfPassenger() {
-        return nameOfPassenger;
-    }
-
-    public void setNameOfPassenger(String nameOfPassenger) {
-        this.nameOfPassenger = nameOfPassenger;
-    }
-
-    public int getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
+    public Integer getId() {
+        return id;
     }
 }

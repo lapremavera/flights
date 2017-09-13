@@ -1,15 +1,17 @@
 package be.vdab.flights.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket>tickets = new ArrayList<>();
 
     private String firstname;
 
@@ -58,5 +60,12 @@ public class Passenger {
 
     public String getFullname() {
         return getFirstname() + " " + getLastname();
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+//        if(!ticket.getPassenger().equals(this)) {
+//            ticket.setPassenger(this);
+//        }
     }
 }
