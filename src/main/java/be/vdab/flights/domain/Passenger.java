@@ -10,7 +10,15 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "passenger")
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    @OneToMany(mappedBy = "passenger", fetch = FetchType.EAGER)
     private List<Ticket>tickets = new ArrayList<>();
 
     private String firstname;
@@ -21,8 +29,8 @@ public class Passenger {
 
     public String fullname;
 
-    public String getId() {
-        return getId();
+    public Integer getId() {
+        return this.id;
     }
 
     public Passenger(String firstname, String lastname) {
@@ -67,5 +75,17 @@ public class Passenger {
 //        if(!ticket.getPassenger().equals(this)) {
 //            ticket.setPassenger(this);
 //        }
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "id=" + id +
+                ", tickets=" + tickets +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", frequentFlyer=" + frequentFlyer +
+                ", fullname='" + fullname + '\'' +
+                '}';
     }
 }

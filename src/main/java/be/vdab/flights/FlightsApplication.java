@@ -3,6 +3,7 @@ package be.vdab.flights;
 import be.vdab.flights.domain.Flight;
 import be.vdab.flights.domain.Passenger;
 import be.vdab.flights.domain.Ticket;
+import org.hibernate.boot.jaxb.SourceType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -45,6 +46,16 @@ public class FlightsApplication {
 
 		Flight g = new Flight("GE780", "Eindhoven", "Griekenland");
 		fr.save(g);
+
+		fr.countFlightByDeparture("Bali");
+		System.out.println(fr.countFlightByDeparture("Bali"));
+
+
+		//Flight flight = fr.readByNumber("GRL.256");
+		//System.out.println(flight.toString());
+
+		List<Passenger>passengerList = pr.getPassengerByFirstnameAndLastname("Natasha", "Doe");
+		System.out.println(passengerList.get(0));
 
 
 

@@ -65,6 +65,16 @@ import javax.persistence.*;
         public void setNumber(String number) {
             this.number = number;
         }
+
+        @Override
+        public String toString() {
+            return "Flight{" +
+                    "id=" + id +
+                    ", number='" + number + '\'' +
+                    ", destination='" + destination + '\'' +
+                    ", departure='" + departure + '\'' +
+                    '}';
+        }
     }
 
 
