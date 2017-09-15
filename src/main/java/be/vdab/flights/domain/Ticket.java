@@ -18,6 +18,12 @@ public class Ticket {
     @ManyToOne
     private Flight flight;
 
+ //   private Ticket ticket;
+
+//    public Ticket getTicket() {
+//        return ticket;
+//    }
+
     public void setPrice(double price) {
         this.price = price;
     }

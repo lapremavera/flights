@@ -1,15 +1,22 @@
 package be.vdab.flights.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAnyAttribute;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@XmlRootElement
 public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+/*
     public List<Ticket> getTickets() {
         return tickets;
     }
@@ -17,9 +24,9 @@ public class Passenger {
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
-
-    @OneToMany(mappedBy = "passenger", fetch = FetchType.EAGER)
-    private List<Ticket>tickets = new ArrayList<>();
+*/
+//    @OneToMany(mappedBy = "passenger", fetch = FetchType.EAGER)
+//    private List<Ticket>tickets = new ArrayList<>();
 
     private String firstname;
 
@@ -28,7 +35,9 @@ public class Passenger {
     private int frequentFlyer;
 
     public String fullname;
+ //   private List<Ticket> tickets;
 
+    @XmlAttribute (name = "id")
     public Integer getId() {
         return this.id;
     }
@@ -42,6 +51,7 @@ public class Passenger {
     public Passenger() {
     }
 
+    @XmlAttribute (name = "First")
     public String getFirstname() {
         return firstname;
     }
@@ -50,6 +60,7 @@ public class Passenger {
         this.firstname = firstname;
     }
 
+    @JsonProperty("abc")
     public String getLastname() {
         return lastname;
     }
@@ -58,9 +69,11 @@ public class Passenger {
         this.lastname = lastname;
     }
 
+    @JsonIgnore
     public int getFrequentFlyer() {
         return frequentFlyer;
     }
+
 
     public void setFrequentFlyer(int frequentFlyer) {
         this.frequentFlyer = frequentFlyer;
@@ -69,9 +82,15 @@ public class Passenger {
     public String getFullname() {
         return getFirstname() + " " + getLastname();
     }
+ //   @JsonIgnore
+ //     public List<Ticket>getTickets() {
+ //       return tickets;
+ //   }
+
+
 
     public void addTicket(Ticket ticket) {
-        tickets.add(ticket);
+//        tickets.add(ticket);
 //        if(!ticket.getPassenger().equals(this)) {
 //            ticket.setPassenger(this);
 //        }
@@ -81,7 +100,6 @@ public class Passenger {
     public String toString() {
         return "Passenger{" +
                 "id=" + id +
-                ", tickets=" + tickets +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", frequentFlyer=" + frequentFlyer +
